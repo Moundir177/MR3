@@ -1,0 +1,132 @@
+{
+  "common": {
+    "home": "Accueil",
+    "about": "À propos",
+    "courses": "Formations",
+    "contact": "Contact",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "language": "Langue"
+  },
+  "hero": {
+    "title": "MIRA ACADEMY",
+    "subtitle": "L'excellence en formation professionnelle",
+    "description": "Découvrez nos formations de qualité pour développer vos compétences et avancer dans votre carrière.",
+    "cta": "Explorez nos formations"
+  },
+  "about": {
+    "title": "À propos de MIRA ACADEMY",
+    "description": "MIRA ACADEMY est un centre de formation professionnelle algérien dédié à l'excellence éducative. Nous proposons des formations innovantes et adaptées aux besoins du marché du travail local et international.",
+    "vision": "Notre vision",
+    "visionText": "Devenir le leader de la formation professionnelle en Algérie, en offrant des programmes éducatifs de haute qualité qui répondent aux défis du 21ème siècle.",
+    "mission": "Notre mission",
+    "missionText": "Former la prochaine génération de professionnels qualifiés en offrant un enseignement pratique, innovant et accessible à tous."
+  },
+  "features": {
+    "title": "Pourquoi choisir MIRA ACADEMY ?",
+    "quality": {
+      "title": "Enseignement de qualité",
+      "description": "Des formateurs expérimentés et des programmes innovants"
+    },
+    "practical": {
+      "title": "Apprentissage pratique",
+      "description": "Des formations orientées vers la pratique et les besoins du marché"
+    },
+    "certification": {
+      "title": "Certifications reconnues",
+      "description": "Des diplômes valorisés par les employeurs"
+    },
+    "support": {
+      "title": "Support personnalisé",
+      "description": "Un accompagnement sur mesure pour votre réussite"
+    }
+  },
+  "courses": {
+    "title": "Nos formations",
+    "viewAll": "Voir toutes les formations",
+    "categories": {
+      "business": "Affaires et Management",
+      "tech": "Technologie et Informatique",
+      "languages": "Langues et Communication",
+      "health": "Santé et Bien-être"
+    },
+    "detail": {
+      "courseNotFound": "Cours non trouvé",
+      "courseNotFoundDesc": "Désolé, le cours que vous recherchez n'existe pas ou a été supprimé.",
+      "viewAllCourses": "Voir tous les cours",
+      "duration": "Durée",
+      "level": "Niveau",
+      "instructor": "Formateur",
+      "enroll": "S'inscrire maintenant",
+      "downloadBrochure": "Télécharger la brochure",
+      "overview": "Aperçu",
+      "curriculum": "Programme",
+      "curriculumObj": {
+        "module1": "Module 1: Introduction",
+        "module2": "Module 2: Compétences de base",
+        "module3": "Module 3: Compétences avancées",
+        "module4": "Module 4: Projet final",
+        "lessons": {
+          "coursePresentation": "Présentation du cours",
+          "environmentSetup": "Configuration de l'environnement",
+          "fundamentalConcepts": "Concepts fondamentaux",
+          "mainTools": "Les principaux outils",
+          "essentialTechniques": "Techniques essentielles",
+          "practicalExercises": "Exercices pratiques",
+          "guidedProject": "Projet guidé",
+          "advancedMethods": "Méthodes avancées",
+          "caseStudies": "Études de cas",
+          "complexProject": "Projet complexe",
+          "projectPreparation": "Préparation du projet",
+          "projectDevelopment": "Développement du projet",
+          "presentationEvaluation": "Présentation et évaluation"
+        }
+      },
+      "instructorTab": "Formateur",
+      "reviews": "Avis",
+      "aboutCourse": "À propos de ce cours",
+      "whatYouWillLearn": "Ce que vous allez apprendre",
+      "prerequisites": "Prérequis",
+      "noPrerequisites": "Aucun prérequis spécifique. Cette formation est accessible aux débutants complets.",
+      "basicPrerequisites": "Connaissances de base dans le domaine. Une première expérience pratique est recommandée.",
+      "advancedPrerequisites": "Bonnes connaissances du domaine et expérience pratique requise. Cette formation s'adresse aux professionnels souhaitant perfectionner leurs compétences.",
+      "courseFeatures": "Caractéristiques du cours",
+      "lifeAccess": "Accès à vie au contenu",
+      "downloadableResources": "Ressources téléchargeables",
+      "officialCertification": "Certification officielle",
+      "personalizedSupport": "Support personnalisé",
+      "courseCurriculum": "Programme du cours",
+      "aboutInstructor": "À propos du formateur",
+      "expert": "Expert en",
+      "instructorBio1": "est un expert reconnu dans son domaine avec plus de 10 ans d'expérience. Il a travaillé sur de nombreux projets d'envergure et partage son expertise à travers des formations de qualité.",
+      "instructorBio2": "Sa pédagogie est basée sur des exemples concrets et des projets pratiques, permettant aux apprenants d'acquérir rapidement les compétences nécessaires pour réussir.",
+      "studentReviews": "Avis des étudiants",
+      "totalReviews": "avis au total",
+      "relatedCourses": "Formations similaires",
+      "learnMore": "En savoir plus",
+      "readyToStart": "Prêt à commencer votre parcours d'apprentissage ?",
+      "enrollNowAndStart": "Inscrivez-vous dès maintenant et commencez à développer vos compétences avec notre formation"
+    }
+  },
+  "testimonials": {
+    "title": "Ce que disent nos étudiants",
+    "more": "Voir plus de témoignages"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "description": "Des questions ? N'hésitez pas à nous contacter.",
+    "name": "Nom complet",
+    "email": "Email",
+    "message": "Message",
+    "subject": "Sujet",
+    "send": "Envoyer",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "emailContact": "Email"
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation"
+  }
+} 

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Poppins', Arial, sans-serif;
+  --font-arabic: 'Amiri', serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-text-light dark:text-text-dark;
+  font-family: var(--font-sans);
+}
+
+/* RTL Support */
+html[dir="rtl"] body {
+  font-family: var(--font-arabic);
+}
+
+html[dir="rtl"] .ltr-only {
+  display: none;
+}
+
+html[dir="ltr"] .rtl-only {
+  display: none;
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary-dark;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center text-text-light dark:text-text-dark;
+  }
+  
+  .section-subtitle {
+    @apply text-xl md:text-2xl font-semibold mb-4 text-primary;
+  }
+} 

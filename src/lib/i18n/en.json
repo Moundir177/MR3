@@ -1,0 +1,132 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "courses": "Courses",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Register",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "MIRA ACADEMY",
+    "subtitle": "Excellence in Professional Training",
+    "description": "Discover our quality courses to develop your skills and advance in your career.",
+    "cta": "Explore our courses"
+  },
+  "about": {
+    "title": "About MIRA ACADEMY",
+    "description": "MIRA ACADEMY is an Algerian professional training center dedicated to educational excellence. We offer innovative training programs tailored to the needs of local and international job markets.",
+    "vision": "Our Vision",
+    "visionText": "To become the leader in professional training in Algeria, offering high-quality educational programs that address the challenges of the 21st century.",
+    "mission": "Our Mission",
+    "missionText": "To train the next generation of qualified professionals by providing practical, innovative, and accessible education to everyone."
+  },
+  "features": {
+    "title": "Why Choose MIRA ACADEMY?",
+    "quality": {
+      "title": "Quality Teaching",
+      "description": "Experienced trainers and innovative programs"
+    },
+    "practical": {
+      "title": "Practical Learning",
+      "description": "Training oriented towards practice and market needs"
+    },
+    "certification": {
+      "title": "Recognized Certifications",
+      "description": "Diplomas valued by employers"
+    },
+    "support": {
+      "title": "Personalized Support",
+      "description": "Customized accompaniment for your success"
+    }
+  },
+  "courses": {
+    "title": "Our Courses",
+    "viewAll": "View all courses",
+    "categories": {
+      "business": "Business and Management",
+      "tech": "Technology and IT",
+      "languages": "Languages and Communication",
+      "health": "Health and Wellness"
+    },
+    "detail": {
+      "courseNotFound": "Course not found",
+      "courseNotFoundDesc": "Sorry, the course you are looking for does not exist or has been removed.",
+      "viewAllCourses": "View all courses",
+      "duration": "Duration",
+      "level": "Level",
+      "instructor": "Instructor",
+      "enroll": "Enroll now",
+      "downloadBrochure": "Download brochure",
+      "overview": "Overview",
+      "curriculum": "Curriculum",
+      "curriculumObj": {
+        "module1": "Module 1: Introduction",
+        "module2": "Module 2: Basic Skills",
+        "module3": "Module 3: Advanced Skills",
+        "module4": "Module 4: Final Project",
+        "lessons": {
+          "coursePresentation": "Course Presentation",
+          "environmentSetup": "Environment Setup",
+          "fundamentalConcepts": "Fundamental Concepts",
+          "mainTools": "Main Tools",
+          "essentialTechniques": "Essential Techniques",
+          "practicalExercises": "Practical Exercises",
+          "guidedProject": "Guided Project",
+          "advancedMethods": "Advanced Methods",
+          "caseStudies": "Case Studies",
+          "complexProject": "Complex Project",
+          "projectPreparation": "Project Preparation",
+          "projectDevelopment": "Project Development",
+          "presentationEvaluation": "Presentation and Evaluation"
+        }
+      },
+      "instructorTab": "Instructor",
+      "reviews": "Reviews",
+      "aboutCourse": "About this course",
+      "whatYouWillLearn": "What you will learn",
+      "prerequisites": "Prerequisites",
+      "noPrerequisites": "No specific prerequisites. This course is accessible to complete beginners.",
+      "basicPrerequisites": "Basic knowledge of the field. Some practical experience is recommended.",
+      "advancedPrerequisites": "Good knowledge of the field and practical experience required. This course is designed for professionals looking to perfect their skills.",
+      "courseFeatures": "Course features",
+      "lifeAccess": "Lifetime access to content",
+      "downloadableResources": "Downloadable resources",
+      "officialCertification": "Official certification",
+      "personalizedSupport": "Personalized support",
+      "courseCurriculum": "Course curriculum",
+      "aboutInstructor": "About the instructor",
+      "expert": "Expert in",
+      "instructorBio1": "is a recognized expert in their field with over 10 years of experience. They have worked on numerous large-scale projects and share their expertise through quality training.",
+      "instructorBio2": "Their teaching method is based on concrete examples and practical projects, allowing learners to quickly acquire the skills necessary to succeed.",
+      "studentReviews": "Student reviews",
+      "totalReviews": "total reviews",
+      "relatedCourses": "Related Courses",
+      "learnMore": "Learn more",
+      "readyToStart": "Ready to start your learning journey?",
+      "enrollNowAndStart": "Enroll now and start developing your skills with our"
+    }
+  },
+  "testimonials": {
+    "title": "What Our Students Say",
+    "more": "View more testimonials"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Have questions? Don't hesitate to reach out to us.",
+    "name": "Full Name",
+    "email": "Email",
+    "message": "Message",
+    "subject": "Subject",
+    "send": "Send",
+    "address": "Address",
+    "phone": "Phone",
+    "emailContact": "Email"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use"
+  }
+} 

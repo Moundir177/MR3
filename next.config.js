@@ -31,8 +31,6 @@ const nextConfig = {
   
   // Required for static export with dynamic routes
   experimental: {
-    // Disable incremental builds for static export
-    incrementalBuildIdentifier: false,
     // Reduce memory usage during builds
     memoryBasedWorkersCount: true,
   },

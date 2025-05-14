@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/add-static-params.js",
     "build": "next build && echo 'Static export completed'",
     "postbuild": "node scripts/generate-fallbacks.js",
     "start": "next start",
@@ -35,6 +36,7 @@
     "@cloudflare/kv-asset-handler": "^0.4.0",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
+    "glob": "^11.0.2",
     "wrangler": "^4.14.4"
   },
   "engines": {

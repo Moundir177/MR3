@@ -357,4 +357,20 @@ export default function BlogPostPage() {
       <Footer />
     </div>
   );
+}
+
+// Required for static export
+export function generateStaticParams() {
+  // Generate static params for all supported locales and some sample slugs
+  const locales = ['fr', 'en', 'ar'];
+  const sampleSlugs = ['post-1', 'post-2', 'post-3', 'introduction-to-ai', 'cloud-computing', 'web-development'];
+  
+  const params = [];
+  locales.forEach(locale => {
+    sampleSlugs.forEach(slug => {
+      params.push({ lang: locale, slug });
+    });
+  });
+  
+  return params;
 } 

@@ -190,10 +190,18 @@ const recentUpdates = [
   }
 ];
 
-export default function ResourcesPage({ params }: { params: { lang: string } }) {
+export default function ResourcesPage({ 
+  params 
+}: { 
+  params: Promise<{ lang: string }> 
+}) {
+  // Unwrap params using React.use()
+  const resolvedParams = React.use(params);
+  const lang = resolvedParams.lang;
+  
   // Make sure we have a valid language, default to French if not found
-  const lang = params.lang as keyof typeof translations;
-  const t = translations[lang] || translations.fr;
+  const safeLanguage = lang as keyof typeof translations;
+  const t = translations[safeLanguage] || translations.fr;
   
   // Safely access nested properties
   const common = t.common || {};
@@ -407,7 +415,7 @@ export default function ResourcesPage({ params }: { params: { lang: string } }) 
                       Our academic advisors can help you find the right resources for your specific needs and learning goals.
                     </p>
                     <a 
-                      href={`/${params.lang}/contact?department=academic`} 
+                      href={`/${lang}/contact?department=academic`} 
                       className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                     >
                       <FiMessageSquare className="mr-2" />
@@ -421,7 +429,7 @@ export default function ResourcesPage({ params }: { params: { lang: string } }) 
                       Having trouble accessing online resources or need help with software? Our technical team is here to help.
                     </p>
                     <a 
-                      href={`/${params.lang}/contact?department=technical`} 
+                      href={`/${lang}/contact?department=technical`} 
                       className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                     >
                       <FiMessageSquare className="mr-2" />

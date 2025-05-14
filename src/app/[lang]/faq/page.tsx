@@ -8,9 +8,14 @@ import PageHeader from '@/components/PageHeader';
 import Faq, { FaqItem } from '@/components/Faq';
 import Link from 'next/link';
 
-export default function FaqPage({ params }: { params: { lang: string } }) {
+export default function FaqPage({ 
+  params 
+}: { 
+  params: Promise<{ lang: string }> 
+}) {
   const { t } = useTranslation();
-  const lang = params.lang;
+  const resolvedParams = React.use(params);
+  const lang = resolvedParams.lang;
 
   const generalFaqItems: FaqItem[] = [
     {

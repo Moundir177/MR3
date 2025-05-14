@@ -104,8 +104,16 @@ const categories = [
   { id: 'workshops', label: { fr: 'Ateliers', ar: 'ورش العمل', en: 'Workshops' } }
 ];
 
-export default function GalleryPage({ params }: { params: { lang: string } }) {
-  const t = translations[params.lang as keyof typeof translations] || translations.fr;
+export default function GalleryPage({ 
+  params 
+}: { 
+  params: Promise<{ lang: string }> 
+}) {
+  // Unwrap params using React.use()
+  const resolvedParams = React.use(params);
+  const lang = resolvedParams.lang;
+  
+  const t = translations[lang as keyof typeof translations] || translations.fr;
   
   // State for filter and search
   const [activeCategory, setActiveCategory] = useState('all');
@@ -151,7 +159,7 @@ export default function GalleryPage({ params }: { params: { lang: string } }) {
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
-                    {category.label[params.lang as keyof typeof category.label] || category.label.en}
+                    {category.label[lang as keyof typeof category.label] || category.label.en}
                   </button>
                 ))}
               </div>
@@ -191,7 +199,7 @@ export default function GalleryPage({ params }: { params: { lang: string } }) {
                       <div className="p-6 w-full">
                         <p className="text-white font-medium">{image.alt}</p>
                         <span className="inline-block px-2 py-1 mt-2 bg-purple-600 text-white text-xs rounded-full">
-                          {categories.find(cat => cat.id === image.category)?.label[params.lang as keyof {fr: string, ar: string, en: string}] || image.category}
+                          {categories.find(cat => cat.id === image.category)?.label[lang as keyof {fr: string, ar: string, en: string}] || image.category}
                         </span>
                       </div>
                     </div>
@@ -238,7 +246,7 @@ export default function GalleryPage({ params }: { params: { lang: string } }) {
               {t.gallery?.ctaText || "Schedule a tour to see our facilities and meet our instructors in person."}
             </p>
             <a 
-              href={`/${params.lang}/contact`}
+              href={`/${lang}/contact`}
               className="inline-block px-6 py-3 bg-white text-purple-700 rounded-md font-medium hover:bg-gray-100 transition-colors"
             >
               {t.gallery?.ctaButton || "Contact Us"}

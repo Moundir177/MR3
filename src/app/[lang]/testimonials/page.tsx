@@ -5,11 +5,16 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PageHeader from '@/components/PageHeader';
-import { useParams } from 'next/navigation';
+import React from 'react';
 
-export default function TestimonialsPage({ params }: { params: { lang: string } }) {
+export default function TestimonialsPage({ 
+  params 
+}: { 
+  params: Promise<{ lang: string }> 
+}) {
   const { t } = useTranslation();
-  const lang = params.lang;
+  const resolvedParams = React.use(params);
+  const lang = resolvedParams.lang;
   
   const testimonials = [
     {

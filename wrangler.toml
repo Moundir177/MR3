@@ -1,0 +1,9 @@
+# Wrangler configuration file for MIRA ACADEMY project
+name = "mracad"
+compatibility_date = "2023-01-01"
+
+[site]
+bucket = ".next"
+
+# Pages configuration
+pages_build_output_dir = ".next" 

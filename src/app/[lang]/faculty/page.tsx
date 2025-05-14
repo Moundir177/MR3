@@ -117,10 +117,17 @@ const facultyMembers = [
   }
 ];
 
-export default function FacultyPage({ params }: { params: { lang: string } }) {
-  // Make sure we have a valid language, default to French if not found
-  const lang = params.lang as keyof typeof translations;
-  const t = translations[lang] || translations.fr;
+export default function FacultyPage({ 
+  params 
+}: { 
+  params: Promise<{ lang: string }> 
+}) {
+  // Unwrap params using React.use()
+  const resolvedParams = React.use(params);
+  const lang = resolvedParams.lang;
+  
+  // Get translations for the current language
+  const t = translations[lang as keyof typeof translations] || translations.fr;
   
   // Safely access nested properties - assuming we'll add faculty translations later
   const common = t.common || {};
@@ -395,7 +402,7 @@ export default function FacultyPage({ params }: { params: { lang: string } }) {
                     
                     <div className="pt-4 border-t border-gray-200">
                       <a 
-                        href={`/${params.lang}/contact?instructor=${selectedMember.name}`}
+                        href={`/${lang}/contact?instructor=${selectedMember.name}`}
                         className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                       >
                         <FiMessageSquare className="mr-2" />
@@ -417,7 +424,7 @@ export default function FacultyPage({ params }: { params: { lang: string } }) {
               We're always looking for experienced professionals to join our teaching team. Share your knowledge and help shape the next generation of talent.
             </p>
             <a 
-              href={`/${params.lang}/careers`} 
+              href={`/${lang}/careers`} 
               className="inline-block px-6 py-3 bg-white text-blue-600 rounded-md font-medium hover:bg-gray-100 transition-colors"
             >
               Explore Teaching Opportunities

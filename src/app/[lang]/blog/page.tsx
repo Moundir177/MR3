@@ -117,8 +117,17 @@ const categories = [
   { id: 'education', count: blogPosts.filter(post => post.category === 'education').length }
 ];
 
-export default function BlogPage({ params }: { params: { lang: string } }) {
-  const t = translations[params.lang as keyof typeof translations] || translations.fr;
+export default function BlogPage({ 
+  params 
+}: { 
+  params: Promise<{ lang: string }> 
+}) {
+  // Unwrap params using React.use()
+  const resolvedParams = React.use(params);
+  const lang = resolvedParams.lang;
+  
+  // Get translations for the current language
+  const t = translations[lang as keyof typeof translations] || translations.fr;
   
   // State for filtering and search
   const [activeCategory, setActiveCategory] = useState('all');
@@ -138,7 +147,7 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
   // Format date
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString(params.lang === 'fr' ? 'fr-FR' : params.lang === 'ar' ? 'ar-EG' : 'en-US', options);
+    return new Date(dateString).toLocaleDateString(lang === 'fr' ? 'fr-FR' : lang === 'ar' ? 'ar-EG' : 'en-US', options);
   };
   
   return (
@@ -179,7 +188,7 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
                         : post.category}
                     </span>
                     <h3 className="text-xl font-bold mb-3">
-                      <Link href={`/${params.lang}/blog/${post.slug}`} className="hover:text-purple-600 transition-colors">
+                      <Link href={`/${lang}/blog/${post.slug}`} className="hover:text-purple-600 transition-colors">
                         {post.title}
                       </Link>
                     </h3>
@@ -249,7 +258,7 @@ export default function BlogPage({ params }: { params: { lang: string } }) {
                               : post.category}
                           </span>
                           <h3 className="text-xl font-bold mb-2">
-                            <Link href={`/${params.lang}/blog/${post.slug}`} className="hover:text-purple-600 transition-colors">
+                            <Link href={`/${lang}/blog/${post.slug}`} className="hover:text-purple-600 transition-colors">
                               {post.title}
                             </Link>
                           </h3>

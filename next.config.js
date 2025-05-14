@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  swcMinify: true, // Use SWC for minification (faster than Terser)
   images: {
     domains: ['images.unsplash.com', 'randomuser.me'],
     remotePatterns: [

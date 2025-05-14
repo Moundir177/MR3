@@ -165,26 +165,32 @@ export const translations = {
       success: '95%',
       successLabel: 'Taux de satisfaction',
       partners: '100+',
-      partnersLabel: 'Entreprises partenaires'
+      partnersLabel: 'Entreprises partenaires',
+      studentsTitle: 'Étudiants Formés',
+      coursesTitle: 'Cours Disponibles',
+      expertsTitle: 'Experts & Formateurs',
+      partnersTitle: 'Partenaires'
     },
     cta: {
       title: 'Prêt à développer vos compétences ?',
       subtitle: 'Rejoignez MIRA ACADEMY aujourd\'hui et commencez votre parcours vers l\'excellence professionnelle.',
-      button: 'Inscrivez-vous maintenant'
+      button: 'Inscrivez-vous maintenant',
+      title: 'Prêt à Commencer Votre Parcours de Formation?',
+      button: 'Explorer Nos Cours'
     },
     about: {
       title: 'À propos de MIRA ACADEMY',
       subtitle: 'Votre partenaire pour l\'excellence en formation professionnelle',
       mission: {
-        title: 'Notre mission',
-        description: 'Offrir une formation professionnelle de qualité qui répond aux besoins du marché du travail algérien et international.'
+        title: 'Notre Mission',
+        description: 'Fournir une formation professionnelle de qualité qui répond aux besoins du marché du travail local et international.'
       },
       vision: {
-        title: 'Notre vision',
+        title: 'Notre Vision',
         description: 'Devenir un leader dans la formation professionnelle en Algérie et contribuer au développement des compétences locales.'
       },
       values: {
-        title: 'Nos valeurs',
+        title: 'Nos Valeurs',
         excellence: 'Excellence',
         excellenceDesc: 'Nous visons l\'excellence dans tous nos programmes de formation.',
         innovation: 'Innovation',
@@ -192,11 +198,11 @@ export const translations = {
         integrity: 'Intégrité',
         integrityDesc: 'Nous agissons avec honnêteté et transparence dans toutes nos interactions.',
         community: 'Communauté',
-        communityDesc: 'Nous croyons en la force de la communauté et du partage des connaissances.'
+        communityDesc: 'Nous croyons au pouvoir de la communauté et au partage des connaissances.'
       },
       team: {
-        title: 'Notre équipe',
-        subtitle: 'Des professionnels dévoués à votre réussite',
+        title: 'Notre Équipe',
+        subtitle: 'Des professionnels dédiés à votre succès',
         members: [
           {
             name: 'Mohammed A.',
@@ -219,8 +225,8 @@ export const translations = {
         ]
       },
       history: {
-        title: 'Notre histoire',
-        description: 'Fondée en 2015, MIRA ACADEMY a commencé comme un petit centre de formation et s\'est développée pour devenir l\'une des principales académies de formation professionnelle en Algérie.',
+        title: 'Notre Histoire',
+        description: 'Fondée en 2015, MIRA ACADEMY est devenue l\'une des principales académies de formation professionnelle en Algérie.',
         milestones: [
           {
             year: '2015',
@@ -490,19 +496,23 @@ export const translations = {
       success: '95%',
       successLabel: 'معدل الرضا',
       partners: '+100',
-      partnersLabel: 'شركة شريكة'
+      partnersLabel: 'شركة شريكة',
+      studentsTitle: 'الطلاب المدربين',
+      coursesTitle: 'الدورات المتاحة',
+      expertsTitle: 'الخبراء والمدربين',
+      partnersTitle: 'الشركاء'
     },
     cta: {
-      title: 'هل أنت مستعد لتطوير مهاراتك؟',
+      title: 'هل أنت مستعد لبدء رحلة التدريب الخاصة بك؟',
       subtitle: 'انضم إلى أكاديمية ميرا اليوم وابدأ رحلتك نحو التميز المهني.',
-      button: 'سجل الآن'
+      button: 'استكشف دوراتنا'
     },
     about: {
       title: 'عن أكاديمية ميرا',
       subtitle: 'شريكك للتميز في التدريب المهني',
       mission: {
         title: 'مهمتنا',
-        description: 'تقديم تدريب مهني عالي الجودة يلبي احتياجات سوق العمل الجزائري والدولي.'
+        description: 'تقديم تدريب مهني عالي الجودة يلبي احتياجات سوق العمل المحلي والدولي.'
       },
       vision: {
         title: 'رؤيتنا',
@@ -511,7 +521,7 @@ export const translations = {
       values: {
         title: 'قيمنا',
         excellence: 'التميز',
-        excellenceDesc: 'نسعى للتميز في جميع برامجنا التدريبية.',
+        excellenceDesc: 'نهدف إلى التميز في جميع برامجنا التدريبية.',
         innovation: 'الابتكار',
         innovationDesc: 'نتبنى أحدث المنهجيات والتقنيات.',
         integrity: 'النزاهة',
@@ -521,7 +531,7 @@ export const translations = {
       },
       team: {
         title: 'فريقنا',
-        subtitle: 'محترفون متفانون في نجاحك',
+        subtitle: 'محترفون مكرسون لنجاحك',
         members: [
           {
             name: 'محمد أ.',
@@ -545,7 +555,7 @@ export const translations = {
       },
       history: {
         title: 'تاريخنا',
-        description: 'تأسست أكاديمية ميرا في عام 2015، بدأت كمركز تدريب صغير وتطورت لتصبح واحدة من أهم أكاديميات التدريب المهني في الجزائر.',
+        description: 'تأسست أكاديمية ميرا في عام 2015، وأصبحت واحدة من الأكاديميات الرائدة في التدريب المهني في الجزائر.',
         milestones: [
           {
             year: '2015',
@@ -824,10 +834,10 @@ export const translations = {
     },
     about: {
       title: 'About MIRA ACADEMY',
-      subtitle: 'Your partner for excellence in professional training',
+      subtitle: 'Your partner for professional training excellence',
       mission: {
         title: 'Our Mission',
-        description: 'To provide quality professional training that meets the needs of the Algerian and international job market.'
+        description: 'To provide quality professional training that meets the needs of the local and international job market.'
       },
       vision: {
         title: 'Our Vision',
@@ -870,29 +880,7 @@ export const translations = {
       },
       history: {
         title: 'Our History',
-        description: 'Founded in 2015, MIRA ACADEMY started as a small training center and has grown to become one of the leading professional training academies in Algeria.',
-        milestones: [
-          {
-            year: '2015',
-            title: 'Foundation',
-            description: 'Creation of MIRA ACADEMY with 3 initial training courses.'
-          },
-          {
-            year: '2018',
-            title: 'Expansion',
-            description: 'Opening of our second campus and introduction of 10 new courses.'
-          },
-          {
-            year: '2020',
-            title: 'Innovation',
-            description: 'Launch of our online learning platform.'
-          },
-          {
-            year: '2023',
-            title: 'Excellence',
-            description: 'Recognition as one of the best training centers in Algeria.'
-          }
-        ]
+        description: 'Founded in 2015, MIRA ACADEMY has grown to become one of the leading professional training academies in Algeria.'
       }
     },
     contact: {

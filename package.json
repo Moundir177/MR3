@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && echo 'Static export completed'",
+    "postbuild": "node scripts/generate-fallbacks.js",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "wrangler pages deploy .next/standalone --project-name=mracad --branch=master"
+    "deploy": "wrangler pages deploy out --project-name=mracad --branch=master"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
@@ -34,7 +35,7 @@
     "@cloudflare/kv-asset-handler": "^0.4.0",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
-    "wrangler": "^3.39.0"
+    "wrangler": "^4.14.4"
   },
   "engines": {
     "node": ">=18.17.0",

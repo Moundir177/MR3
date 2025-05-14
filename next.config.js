@@ -19,21 +19,20 @@ const nextConfig = {
     unoptimized: true, // Required for Cloudflare Pages
     minimumCacheTTL: 60,
   },
-  // Use standalone output for Cloudflare Pages
-  output: 'standalone',
+  // Use export mode for better Cloudflare compatibility
+  output: 'export',
   
   // Generate static HTML to ensure good Cloudflare Pages compatibility
   generateEtags: false,
   poweredByHeader: false,
   
   // Enable asset prefixing for better path handling
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/.next' : '',
+  assetPrefix: '',
   
+  // Required for static export with dynamic routes
   experimental: {
-    // Enable serverActions only for client components
-    serverActions: {
-      allowedOrigins: ['localhost:3000', 'mracad.pages.dev', '*.mracad.pages.dev'],
-    },
+    // Disable incremental builds for static export
+    incrementalBuildIdentifier: false,
     // Reduce memory usage during builds
     memoryBasedWorkersCount: true,
   },

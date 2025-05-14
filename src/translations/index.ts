@@ -172,10 +172,8 @@ export const translations = {
       partnersTitle: 'Partenaires'
     },
     cta: {
-      title: 'Prêt à développer vos compétences ?',
-      subtitle: 'Rejoignez MIRA ACADEMY aujourd\'hui et commencez votre parcours vers l\'excellence professionnelle.',
-      button: 'Inscrivez-vous maintenant',
       title: 'Prêt à Commencer Votre Parcours de Formation?',
+      subtitle: 'Rejoignez MIRA ACADEMY aujourd\'hui et commencez votre parcours vers l\'excellence professionnelle.',
       button: 'Explorer Nos Cours'
     },
     about: {

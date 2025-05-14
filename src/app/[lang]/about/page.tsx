@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { translations } from '@/translations';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import HeaderWrapper from '@/components/HeaderWrapper';
+import FooterWrapper from '@/components/FooterWrapper';
 import { FiAward, FiTrendingUp, FiCheck, FiUsers } from 'react-icons/fi';
 
 // Sample team data
@@ -79,7 +79,7 @@ export default function AboutPage({
   
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <HeaderWrapper />
       
       <main className="flex-grow">
         {/* Hero Section */}
@@ -302,7 +302,7 @@ export default function AboutPage({
         </div>
       </main>
       
-      <Footer />
+      <FooterWrapper />
     </div>
   );
 } 

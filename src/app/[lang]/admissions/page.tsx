@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { translations } from '@/translations';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import HeaderWrapper from '@/components/HeaderWrapper';
+import FooterWrapper from '@/components/FooterWrapper';
 import { 
   FiCalendar, 
   FiCheckCircle, 
@@ -161,7 +161,7 @@ export default function AdmissionsPage({
   
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <HeaderWrapper />
       
       <main className="flex-grow">
         {/* Hero Section */}
@@ -484,7 +484,7 @@ export default function AdmissionsPage({
         </div>
       </main>
       
-      <Footer />
+      <FooterWrapper />
     </div>
   );
 } 

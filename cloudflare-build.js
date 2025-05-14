@@ -28,21 +28,20 @@ process.env.CLOUDFLARE_PAGES = '1';
 // Set increased memory for Node.js
 process.env.NODE_OPTIONS = '--max_old_space_size=4096';
 
-// Ensure TypeScript is available globally before installing dependencies
-console.log('🔍 Ensuring TypeScript is available');
-runCommand('npm install -g typescript');
+// Simplify TypeScript configuration for build
+console.log('🔧 Simplifying TypeScript configuration for build');
+if (fs.existsSync('temp-tsconfig.json')) {
+  fs.copyFileSync('temp-tsconfig.json', 'tsconfig.json');
+  console.log('  - Copied simplified tsconfig.json');
+}
+
+// Install TypeScript and dependencies locally
+console.log('📦 Installing TypeScript and dependencies');
+runCommand('npm install --no-save typescript@4.9.5 @types/node@18.11.18 @types/react@18.0.27 @types/react-dom@18.0.10');
 
 // Install dependencies
 console.log('📦 Installing dependencies');
 runCommand('npm ci --prefer-offline --no-audit');
-
-// Ensure TypeScript is installed (for CI/CD environment)
-console.log('🔍 Installing TypeScript dependencies');
-runCommand('npm install --save-dev --no-save typescript@latest @types/node@latest @types/react@latest @types/react-dom@latest');
-
-// Verify TypeScript installation
-console.log('🔍 Verifying TypeScript setup');
-runCommand('node verify-typescript.js');
 
 // Build the application
 console.log('🏗️ Building Next.js application');

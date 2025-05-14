@@ -28,13 +28,21 @@ process.env.CLOUDFLARE_PAGES = '1';
 // Set increased memory for Node.js
 process.env.NODE_OPTIONS = '--max_old_space_size=4096';
 
+// Ensure TypeScript is available globally before installing dependencies
+console.log('🔍 Ensuring TypeScript is available');
+runCommand('npm install -g typescript');
+
 // Install dependencies
 console.log('📦 Installing dependencies');
 runCommand('npm ci --prefer-offline --no-audit');
 
 // Ensure TypeScript is installed (for CI/CD environment)
-console.log('🔍 Verifying TypeScript installation');
-runCommand('npm install --no-save typescript@latest @types/node@latest');
+console.log('🔍 Installing TypeScript dependencies');
+runCommand('npm install --save-dev --no-save typescript@latest @types/node@latest @types/react@latest @types/react-dom@latest');
+
+// Verify TypeScript installation
+console.log('🔍 Verifying TypeScript setup');
+runCommand('node verify-typescript.js');
 
 // Build the application
 console.log('🏗️ Building Next.js application');

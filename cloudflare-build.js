@@ -29,23 +29,21 @@ process.env.CLOUDFLARE_PAGES = '1';
 process.env.NODE_OPTIONS = '--max_old_space_size=4096';
 
 // Simplify TypeScript configuration for build
-console.log('🔧 Simplifying TypeScript configuration for build');
+console.log('🔧 Setting up TypeScript configuration');
+// Use the simpler TypeScript config
 if (fs.existsSync('temp-tsconfig.json')) {
   fs.copyFileSync('temp-tsconfig.json', 'tsconfig.json');
-  console.log('  - Copied simplified tsconfig.json');
+  console.log('✅ Using simplified tsconfig.json');
 }
 
-// Install TypeScript and dependencies locally
-console.log('📦 Installing TypeScript and dependencies');
+// Directly install TypeScript
+console.log('📦 Installing TypeScript dependencies');
+runCommand('npm install -g typescript');
 runCommand('npm install --no-save typescript@4.9.5 @types/node@18.11.18 @types/react@18.0.27 @types/react-dom@18.0.10');
 
-// Install dependencies
-console.log('📦 Installing dependencies');
-runCommand('npm ci --prefer-offline --no-audit');
-
-// Build the application
+// Build the application using direct build command
 console.log('🏗️ Building Next.js application');
-runCommand('npm run build');
+runCommand('next build');
 
 // Optimize the build output
 console.log('🧹 Cleaning up build artifacts');

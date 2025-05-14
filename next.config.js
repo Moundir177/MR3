@@ -14,7 +14,9 @@ const nextConfig = {
         hostname: 'randomuser.me',
       }
     ],
+    unoptimized: process.env.NODE_ENV === 'production', // Optimize for Cloudflare Pages
   },
+  output: 'standalone', // Optimize for Cloudflare Pages
 };
 
 module.exports = nextConfig; 

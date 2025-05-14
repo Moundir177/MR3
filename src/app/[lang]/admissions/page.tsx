@@ -138,12 +138,17 @@ const tuitionInfo = [
   }
 ];
 
-export default function AdmissionsPage({ params }: { params: { lang: string } }) {
-  // Make sure we have a valid language, default to French if not found
-  const lang = params.lang as keyof typeof translations;
+export default function AdmissionsPage({ 
+  params 
+}: { 
+  params: Promise<{ lang: string }> 
+}) {
+  // Unwrap params using React.use()
+  const resolvedParams = React.use(params);
+  const lang = resolvedParams.lang as keyof typeof translations;
   const t = translations[lang] || translations.fr;
   
-  // Safely access nested properties - assuming we'll add admissions translations later
+  // Safely access nested properties
   const common = t.common || {};
   
   // State for FAQ accordion
@@ -168,7 +173,7 @@ export default function AdmissionsPage({ params }: { params: { lang: string } })
             </p>
             <div className="mt-8">
               <a 
-                href={`/${params.lang}/apply`} 
+                href={`/${resolvedParams.lang}/apply`} 
                 className="inline-block px-6 py-3 bg-white text-blue-600 rounded-md font-medium hover:bg-gray-100 transition-colors mx-2"
               >
                 Apply Now
@@ -239,7 +244,7 @@ export default function AdmissionsPage({ params }: { params: { lang: string } })
                           
                           {step.action && (
                             <a 
-                              href={`/${params.lang}${step.action.link}`} 
+                              href={`/${resolvedParams.lang}${step.action.link}`} 
                               className="inline-flex items-center text-blue-600 hover:text-blue-800"
                             >
                               {step.action.text}
@@ -308,7 +313,7 @@ export default function AdmissionsPage({ params }: { params: { lang: string } })
                       <li>• Scholarships and financial aid for eligible students</li>
                     </ul>
                     <a 
-                      href={`/${params.lang}/financial-aid`} 
+                      href={`/${resolvedParams.lang}/financial-aid`} 
                       className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
                     >
                       Learn about financial aid options
@@ -396,7 +401,7 @@ export default function AdmissionsPage({ params }: { params: { lang: string } })
                     All documents must be submitted in French or English. Translations must be certified. Original documents may be requested for verification during the enrollment process.
                   </p>
                   <a 
-                    href={`/${params.lang}/document-guidelines`} 
+                    href={`/${resolvedParams.lang}/document-guidelines`} 
                     className="text-blue-600 hover:text-blue-800 font-medium inline-flex items-center"
                   >
                     View document submission guidelines
@@ -451,7 +456,7 @@ export default function AdmissionsPage({ params }: { params: { lang: string } })
                   Don't see your question answered here?
                 </p>
                 <a 
-                  href={`/${params.lang}/contact?department=admissions`} 
+                  href={`/${resolvedParams.lang}/contact?department=admissions`} 
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                 >
                   <FiMessageSquare className="mr-2" />
@@ -470,7 +475,7 @@ export default function AdmissionsPage({ params }: { params: { lang: string } })
               Start your application today and take the first step toward your professional growth with MIRA ACADEMY.
             </p>
             <a 
-              href={`/${params.lang}/apply`} 
+              href={`/${resolvedParams.lang}/apply`} 
               className="inline-block px-8 py-4 bg-white text-blue-600 rounded-md font-bold hover:bg-gray-100 transition-colors"
             >
               Apply Now

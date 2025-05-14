@@ -19,8 +19,16 @@ const nextConfig = {
     unoptimized: true, // Required for Cloudflare Pages
     minimumCacheTTL: 60,
   },
-  // Change back to standalone to support dynamic routes
+  // Use standalone output for Cloudflare Pages
   output: 'standalone',
+  
+  // Generate static HTML to ensure good Cloudflare Pages compatibility
+  generateEtags: false,
+  poweredByHeader: false,
+  
+  // Enable asset prefixing for better path handling
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/.next' : '',
+  
   experimental: {
     // Enable serverActions only for client components
     serverActions: {

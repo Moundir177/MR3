@@ -55,12 +55,54 @@ jobs:
       - name: Prepare standalone for deployment
         run: |
           echo "Preparing standalone directory for deployment..."
-          # Ensure public and static directories are copied
+          # Create complete deployment structure
+          mkdir -p .next/standalone/.next
+          
+          # Copy public directory (if exists)
           if [ -d "public" ]; then
             cp -r public .next/standalone/ || echo "No public directory to copy"
           fi
-          mkdir -p .next/standalone/.next/static
-          cp -r .next/static/* .next/standalone/.next/static/ || echo "No static files to copy"
+          
+          # Ensure static directory is properly copied
+          if [ -d ".next/static" ]; then
+            mkdir -p .next/standalone/.next/static
+            cp -r .next/static/* .next/standalone/.next/static/ || echo "No static files to copy"
+          fi
+          
+          # Copy any server files that might be needed
+          if [ -d ".next/server" ]; then
+            mkdir -p .next/standalone/.next/server
+            cp -r .next/server/* .next/standalone/.next/server/ || echo "No server files to copy"
+          fi
+          
+          # Add the required file to make it deployable to Cloudflare Pages
+          echo '{"version":1,"paths":{}}' > .next/standalone/_routes.json
+          echo '/* /index.html 200' > .next/standalone/_redirects
+          
+          # Create a Cloudflare worker to handle routing
+          cat > .next/standalone/_worker.js << 'EOF'
+          export default {
+            async fetch(request, env) {
+              const url = new URL(request.url);
+              // Handle static assets from .next directory
+              if (url.pathname.startsWith('/.next/')) {
+                // Strip leading slash
+                const assetPath = url.pathname.slice(1);
+                return env.ASSETS.fetch(new Request(new URL(assetPath, request.url), request));
+              }
+              // Handle root path
+              if (url.pathname === '/') {
+                return env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+              }
+              // Default handling
+              return env.ASSETS.fetch(request);
+            }
+          };
+          EOF
+          
+          # List the final structure for debugging
+          echo "Final deployment structure:"
+          find .next/standalone -type f | sort || echo "Failed to list files"
           
       - name: Deploy to Cloudflare Pages
         id: cloudflare-deploy

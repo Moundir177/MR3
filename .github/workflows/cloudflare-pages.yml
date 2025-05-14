@@ -53,9 +53,10 @@ jobs:
           wranglerVersion: '3.11.0'  # Specify a stable Wrangler version
           branch: master
           
-      - name: Cloudflare Purge Cache (Optional)
+      - name: Purge Cloudflare Cache
         if: success()
-        uses: jakejarvis/cloudflare-purge-action@master
-        env:
-          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE_ID }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }} 
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}' 

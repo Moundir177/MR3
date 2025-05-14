@@ -37,12 +37,29 @@ jobs:
           NODE_OPTIONS: "--max_old_space_size=4096"
           NEXT_TELEMETRY_DISABLED: 1
           
+      - name: Verify build output
+        run: |
+          echo "Checking build output structure..."
+          ls -la .next || echo ".next directory not found"
+          ls -la .next/standalone || echo ".next/standalone directory not found"
+          
+      - name: Prepare standalone for deployment
+        run: |
+          echo "Preparing standalone directory for deployment..."
+          # Ensure public and static directories are copied
+          cp -r public .next/standalone/ || echo "No public directory to copy"
+          mkdir -p .next/standalone/.next/static
+          cp -r .next/static/* .next/standalone/.next/static/ || echo "No static files to copy"
+          
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .next/standalone --project-name=mracad --branch=master --commit-dirty=true
+        run: |
+          # Install wrangler globally
+          npm install -g wrangler@latest
+          # Deploy to Cloudflare Pages
+          wrangler pages deploy .next/standalone --project-name=mracad --branch=master --commit-dirty=true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           
       - name: Purge Cloudflare Cache
         if: success()

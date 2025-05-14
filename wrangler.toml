@@ -1,9 +1,26 @@
 # Wrangler configuration file for MIRA ACADEMY project
 name = "mracad"
-compatibility_date = "2023-01-01"
+compatibility_date = "2023-10-30"
+compatibility_flags = ["nodejs_compat"]
+
+# Pages configuration
+pages_build_output_dir = ".next"
+
+# Increase resource limits to avoid timeouts
+[limits]
+cpu_ms = 50
 
 [site]
 bucket = ".next"
 
-# Pages configuration
-pages_build_output_dir = ".next" 
+[env.production]
+name = "mracad-production"
+route = "mracad.pages.dev/*"
+
+[env.preview]
+name = "mracad-preview"
+
+[build]
+command = "npm run build"
+cwd = "."
+watch_dir = "src" 

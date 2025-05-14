@@ -3,26 +3,39 @@ name: Deploy to Cloudflare Pages
 on:
   push:
     branches: [master]
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30  # Set timeout to avoid hung builds
     
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Upgrade to v4
+        with:
+          fetch-depth: 0  # Fetch all history for proper versioning
       
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4  # Upgrade to v4
         with:
           node-version: '18'
           cache: 'npm'
+      
+      - name: Cache Node modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
+      - name: Run Cloudflare optimized build script
+        run: npm run cloudflare:build
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
+          NEXT_TELEMETRY_DISABLED: 1
           
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build
-        run: npm run build
-      
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
@@ -30,4 +43,13 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: mracad
           directory: .next
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }} 
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          wranglerVersion: '3.11.0'  # Specify a stable Wrangler version
+          branch: master
+          
+      - name: Cloudflare Purge Cache (Optional)
+        if: success()
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }} 

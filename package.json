@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cloudflare:build": "node cloudflare-build.js",
+    "cloudflare:dev": "wrangler pages dev .next --compatibility-date=2023-10-30",
+    "deploy": "wrangler pages deploy .next --project-name=mracad --branch=master --commit-dirty=true"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
@@ -31,6 +34,16 @@
     "@types/react-dom": "^18.2.17",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
-    "typescript": "^5.3.3"
-  }
+    "typescript": "^5.3.3",
+    "wrangler": "^3.39.0"
+  },
+  "engines": {
+    "node": ">=18.17.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "last 2 chrome versions",
+    "last 2 firefox versions",
+    "last 2 safari versions"
+  ]
 }

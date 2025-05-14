@@ -75,8 +75,16 @@ jobs:
             cp -r .next/server/* .next/standalone/.next/server/ || echo "No server files to copy"
           fi
           
-          # Add the required file to make it deployable to Cloudflare Pages
-          echo '{"version":1,"paths":{}}' > .next/standalone/_routes.json
+          # Create valid _routes.json file
+          cat > .next/standalone/_routes.json << EOF
+          {
+            "version": 1,
+            "include": ["/*"],
+            "exclude": []
+          }
+          EOF
+          
+          # Create redirects file
           echo '/* /index.html 200' > .next/standalone/_redirects
           
           # Create a Cloudflare worker to handle routing

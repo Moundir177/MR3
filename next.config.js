@@ -4,7 +4,6 @@ const path = require('path');
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  // swcMinify: true, // Removed - deprecated in Next.js 15+
   images: {
     domains: ['images.unsplash.com', 'randomuser.me'],
     remotePatterns: [
@@ -17,12 +16,14 @@ const nextConfig = {
         hostname: 'randomuser.me',
       }
     ],
-    unoptimized: true, // Fix for Cloudflare Pages deployment - must be unconditionally true
-    minimumCacheTTL: 60, // Increase cache time to reduce builds
+    unoptimized: true, // Required for Cloudflare Pages
+    minimumCacheTTL: 60,
   },
-  output: 'standalone', // Optimize for Cloudflare Pages deployment
+  // Change output mode to export for Cloudflare Pages compatibility
+  output: 'export',
+  distDir: '.next',
   experimental: {
-    // Enable serverActions only for client components to avoid SSR issues
+    // Enable serverActions only for client components
     serverActions: {
       allowedOrigins: ['localhost:3000', 'mracad.pages.dev', '*.mracad.pages.dev'],
     },

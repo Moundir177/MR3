@@ -19,9 +19,8 @@ const nextConfig = {
     unoptimized: true, // Required for Cloudflare Pages
     minimumCacheTTL: 60,
   },
-  // Change output mode to export for Cloudflare Pages compatibility
-  output: 'export',
-  distDir: '.next',
+  // Change back to standalone to support dynamic routes
+  output: 'standalone',
   experimental: {
     // Enable serverActions only for client components
     serverActions: {

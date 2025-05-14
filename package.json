@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "wrangler pages deploy .next --project-name=mracad --branch=master"
+    "deploy": "wrangler pages deploy .next/standalone --project-name=mracad --branch=master"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",

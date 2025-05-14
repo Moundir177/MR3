@@ -42,7 +42,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .next --project-name=mracad --branch=master --commit-dirty=true
+          command: pages deploy .next/standalone --project-name=mracad --branch=master --commit-dirty=true
           
       - name: Purge Cloudflare Cache
         if: success()

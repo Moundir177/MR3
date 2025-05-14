@@ -5,6 +5,12 @@ on:
     branches: [master]
   workflow_dispatch:  # Allow manual triggering
 
+# Add permissions for deployments
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest

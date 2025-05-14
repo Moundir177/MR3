@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
+
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
+  // swcMinify: true, // Removed - deprecated in Next.js 15+
   images: {
     domains: ['images.unsplash.com', 'randomuser.me'],
     remotePatterns: [
@@ -33,6 +36,14 @@ const nextConfig = {
   eslint: {
     // Disable eslint checking in production build to speed up deployment
     ignoreDuringBuilds: true,
+  },
+  // Add webpack configuration for path aliases
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, 'src/'),
+    };
+    return config;
   },
 };
 

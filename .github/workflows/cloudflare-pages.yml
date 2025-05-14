@@ -47,7 +47,9 @@ jobs:
         run: |
           echo "Preparing standalone directory for deployment..."
           # Ensure public and static directories are copied
-          cp -r public .next/standalone/ || echo "No public directory to copy"
+          if [ -d "public" ]; then
+            cp -r public .next/standalone/ || echo "No public directory to copy"
+          fi
           mkdir -p .next/standalone/.next/static
           cp -r .next/static/* .next/standalone/.next/static/ || echo "No static files to copy"
           

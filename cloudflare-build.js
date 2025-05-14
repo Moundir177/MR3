@@ -32,6 +32,10 @@ process.env.NODE_OPTIONS = '--max_old_space_size=4096';
 console.log('📦 Installing dependencies');
 runCommand('npm ci --prefer-offline --no-audit');
 
+// Ensure TypeScript is installed (for CI/CD environment)
+console.log('🔍 Verifying TypeScript installation');
+runCommand('npm install --no-save typescript@latest @types/node@latest');
+
 // Build the application
 console.log('🏗️ Building Next.js application');
 runCommand('npm run build');

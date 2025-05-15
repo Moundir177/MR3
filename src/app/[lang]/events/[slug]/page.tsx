@@ -350,7 +350,7 @@ export default function EventDetailPage({ params }: { params: { slug: string, la
   const t = translations[lang as keyof typeof translations] || translations.fr;
   
   return <EventDetailClient event={event} eventsData={eventsData} slug={slug} lang={lang} t={t} />;
-}
+} 
 
 // Static params for Next.js static export
 export function generateStaticParams() {

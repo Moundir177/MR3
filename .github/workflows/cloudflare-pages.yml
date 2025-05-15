@@ -30,7 +30,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           environment: production
           description: "Deploy to Cloudflare Pages"
-          
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:

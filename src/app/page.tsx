@@ -22,7 +22,7 @@ export default function Home() {
         <a href="/fr" style={{ color: '#0070f3', textDecoration: 'none', marginRight: '10px' }}>French</a>
         <a href="/en" style={{ color: '#0070f3', textDecoration: 'none', marginRight: '10px' }}>English</a>
         <a href="/ar" style={{ color: '#0070f3', textDecoration: 'none' }}>Arabic</a>
-      </div>
+          </div>
     </div>
   );
 }

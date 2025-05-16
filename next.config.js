@@ -19,6 +19,9 @@ const nextConfig = {
     unoptimized: true, // Required for Cloudflare Pages
     minimumCacheTTL: 60,
   },
+  // Use export mode for Cloudflare Pages deployment
+  output: 'export',
+  
   // Generate static HTML to ensure good Cloudflare Pages compatibility
   generateEtags: false,
   poweredByHeader: false,

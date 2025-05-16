@@ -55,6 +55,9 @@ jobs:
         run: |
           echo "Preparing static files for deployment..."
           
+          # Ensure out directory exists
+          mkdir -p out
+          
           # Create valid _routes.json file
           cat > out/_routes.json << EOF
           {

@@ -22,6 +22,16 @@ export const metadata: Metadata = {
   description: 'MIRA ACADEMY est un centre de formation professionnelle algérien dédié à l\'excellence éducative.',
 };
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return [
+    { lang: 'fr' },
+    { lang: 'en' },
+    { lang: 'ar' },
+  ];
+}
+
 export default function RootLayout({
   children,
 }: {

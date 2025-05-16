@@ -4,7 +4,6 @@ const path = require('path');
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  // swcMinify: true, // Removed - deprecated in Next.js 15+
   images: {
     domains: ['images.unsplash.com', 'randomuser.me'],
     remotePatterns: [
@@ -17,15 +16,18 @@ const nextConfig = {
         hostname: 'randomuser.me',
       }
     ],
-    unoptimized: true, // Fix for Cloudflare Pages deployment - must be unconditionally true
-    minimumCacheTTL: 60, // Increase cache time to reduce builds
+    unoptimized: true, // Required for Cloudflare Pages
+    minimumCacheTTL: 60,
   },
-  output: 'standalone', // Optimize for Cloudflare Pages deployment
+  // Generate static HTML to ensure good Cloudflare Pages compatibility
+  generateEtags: false,
+  poweredByHeader: false,
+  
+  // Enable asset prefixing for better path handling
+  assetPrefix: '',
+  
+  // Required for static export with dynamic routes
   experimental: {
-    // Enable serverActions only for client components to avoid SSR issues
-    serverActions: {
-      allowedOrigins: ['localhost:3000', 'mracad.pages.dev', '*.mracad.pages.dev'],
-    },
     // Reduce memory usage during builds
     memoryBasedWorkersCount: true,
   },

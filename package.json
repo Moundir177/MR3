@@ -4,15 +4,18 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "prebuild": "node scripts/add-static-params.js",
+    "build": "next build && echo 'Static export completed'",
+    "postbuild": "node scripts/generate-fallbacks.js",
     "start": "next start",
     "lint": "next lint",
-    "cloudflare:build": "node cloudflare-build.js",
-    "cloudflare:dev": "wrangler pages dev .next --compatibility-date=2023-10-30",
-    "deploy": "wrangler pages deploy .next --project-name=mracad --branch=master --commit-dirty=true"
+    "deploy": "wrangler pages deploy out --project-name=mracad --branch=master"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
     "autoprefixer": "^10.4.16",
     "formik": "^2.4.5",
     "framer-motion": "^10.16.16",
@@ -27,15 +30,14 @@
     "react-icons": "^5.5.0",
     "tailwindcss": "^3.3.6",
     "typescript": "4.9.5",
-    "@types/node": "18.11.18",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
     "yup": "^1.3.3"
   },
   "devDependencies": {
+    "@cloudflare/kv-asset-handler": "^0.4.0",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
-    "wrangler": "^3.39.0"
+    "glob": "^11.0.2",
+    "wrangler": "^4.14.4"
   },
   "engines": {
     "node": ">=18.17.0",

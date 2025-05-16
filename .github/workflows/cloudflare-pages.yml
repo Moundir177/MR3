@@ -18,44 +18,92 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4  # Upgrade to v4
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for proper versioning
+          fetch-depth: 0
+      
+      # Create GitHub deployment
+      - name: Create GitHub deployment
+        id: deployment
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: production
+          description: "Deploy to Cloudflare Pages"
       
       - name: Setup Node.js
-        uses: actions/setup-node@v4  # Upgrade to v4
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
       
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: npm install
       
-      - name: Run Cloudflare optimized build script
-        run: npm run cloudflare:build
+      - name: Build Next.js application
+        run: npm run build
         env:
           NODE_OPTIONS: "--max_old_space_size=4096"
           NEXT_TELEMETRY_DISABLED: 1
           
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: mracad
-          directory: .next
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          wranglerVersion: '3.11.0'  # Specify a stable Wrangler version
-          branch: master
+      - name: Verify build output
+        run: |
+          echo "Checking build output structure..."
+          ls -la out || echo "out directory not found"
           
-      - name: Cloudflare Purge Cache (Optional)
-        if: success()
-        uses: jakejarvis/cloudflare-purge-action@master
+      - name: Prepare static files for deployment
+        run: |
+          echo "Preparing static files for deployment..."
+          
+          # Create valid _routes.json file
+          cat > out/_routes.json << EOF
+          {
+            "version": 1,
+            "include": ["/*"],
+            "exclude": []
+          }
+          EOF
+          
+          # List the final structure for debugging
+          echo "Final deployment structure:"
+          find out -type f | head -20 || echo "Failed to list files"
+          
+      - name: Deploy to Cloudflare Pages
+        id: cloudflare-deploy
+        run: |
+          # Install wrangler globally
+          npm install -g wrangler@latest
+          # Deploy to Cloudflare Pages and capture output
+          DEPLOYMENT_OUTPUT=$(wrangler pages deploy out --project-name=mracad --branch=master --commit-dirty=true)
+          echo "$DEPLOYMENT_OUTPUT"
+          
+          # Extract the deployment URL using grep and sed
+          PREVIEW_URL=$(echo "$DEPLOYMENT_OUTPUT" | grep -o 'https://[a-zA-Z0-9.-]*.mracad.pages.dev' | head -1)
+          if [ -z "$PREVIEW_URL" ]; then
+            PREVIEW_URL="https://mracad.pages.dev"  # Default URL if not found
+          fi
+          
+          # Set output variables for use in later steps
+          echo "preview_url=$PREVIEW_URL" >> $GITHUB_OUTPUT
         env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }} 
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          
+      # Update GitHub deployment status
+      - name: Update deployment status
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          state: "success"
+          environment-url: ${{ steps.cloudflare-deploy.outputs.preview_url }}
+          
+      - name: Purge Cloudflare Cache
+        if: success()
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
